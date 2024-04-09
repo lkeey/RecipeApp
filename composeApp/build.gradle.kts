@@ -41,7 +41,7 @@ kotlin {
             implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModel")
             implementation("androidx.lifecycle:lifecycle-runtime-ktx:$viewModel")
             //Coil
-            implementation("io.coil-kt:coil:$coil")
+            implementation("io.coil-kt:coil-compose:$coil")
         }
         commonMain.dependencies {
             implementation(compose.runtime)

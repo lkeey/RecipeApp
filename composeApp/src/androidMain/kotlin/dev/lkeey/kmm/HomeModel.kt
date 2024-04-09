@@ -15,16 +15,18 @@ import kotlinx.coroutines.launch
 
 
 class HomeModel : ViewModel() {
-    private val _count = MutableStateFlow(CountModel())
-    val count = _count.asStateFlow()
+    private val _state = MutableStateFlow(HomeState())
+    val count = _state.asStateFlow()
 
     private val repository = Repository()
 
     init {
         viewModelScope.launch {
-            repository.countFlow().collect { result->
-                _count.update {
-                    result
+            repository.getReceiptsFlow("spagetti").collect { result->
+                _state.update {
+                    it.copy(
+                        receipts = result.receipts
+                    )
                 }
             }
         }
